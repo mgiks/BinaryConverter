@@ -92,7 +92,6 @@ class DoublePrecision(BinaryFloatingPointNumber):
 
         return (sign * mantissa * (2 ** exponent))
         
-print(CustomPrecision.decimal_number("0 10000010 11101010101010101010101"))
 
 
 
