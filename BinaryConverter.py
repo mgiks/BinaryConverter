@@ -25,8 +25,11 @@ class CustomPrecision(BinaryFloatingPointNumber):
         return result - 2**bias_exponent + 1
 
     @classmethod
-    def decimal_number(cls, binary_number):
+    def to_decimal_number(cls, binary_number):
         binary_number = binary_number.strip()
+        for i in range(len(binary_number)):
+            if binary_number[i] not in ["0","1"]:
+                return f"Not a binary digit at the position {i}"
         
         sign = 1 if binary_number[:1] else -1
         
@@ -59,8 +62,11 @@ class SinglePrecision(BinaryFloatingPointNumber):
         return result - 2**bias_exponent + 1
 
     @classmethod
-    def decimal_number(cls, binary_number):
+    def to_decimal_number(cls, binary_number):
         binary_number = binary_number.replace(" ", "")
+        for i in range(len(binary_number)):
+            if binary_number[i] not in ["0","1"]:
+                return f"Not a binary digit at the position {i}"
         
         sign = 1 if binary_number[:1] else -1
         exponent = cls.exponent(binary_number[1:9])
@@ -83,8 +89,11 @@ class DoublePrecision(BinaryFloatingPointNumber):
         return result - 2**bias_exponent + 1
     
     @classmethod
-    def decimal_number(cls, binary_number):
+    def to_decimal_number(cls, binary_number):
         binary_number = binary_number.replace(" ", "")
+        for i in range(len(binary_number)):
+            if binary_number[i] not in ["0","1"]:
+                return f"Not a binary digit at the position {i}"
         
         sign = 1 if binary_number[:1] else -1
         exponent = cls.exponent(binary_number[1:12])
@@ -92,7 +101,6 @@ class DoublePrecision(BinaryFloatingPointNumber):
 
         return (sign * mantissa * (2 ** exponent))
         
-
 
 
 
